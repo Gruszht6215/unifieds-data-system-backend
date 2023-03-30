@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  mariadb:
+    platform: linux/x86_64
+    container_name: UDGS_MARIADB_DB
+    image: mariadb:10
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'udgs_mariadb_db'
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./storage/mariadb/data/:/var/lib/mariadb/data/
